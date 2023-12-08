@@ -37,18 +37,10 @@ class _AddDownload extends State<AddDownload> {
     } else if (!value.contains("BV")) {
       _toast("链接有误");
     } else if (r == 0) {
-      var path = value.toUpperCase();
-      Response result;
-      Map play;
-      // https://www.bilibili.com/video/BV13G4Y1X7TC
-      // https://www.bilibili.com/video/BV1nu4y1V7Tq/?spm_id_from=333.1007.tianma.1-1-1.click
-      // WebView
-      result = await Request.get('https://www.bilibili.com/video/$path/?spm_id_from=333.1007.tianma.1-2-2.click');
-      if (result.statusCode == 200) {
-        print(result);
-        play = ParsePlay.parsePlay(result.toString());
-        print(play['data']['dish']);
-      }
+      Response? result = await Request.get('https://www.bilibili.com/video/$value/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=802f1da793ead12c1dc26f782f4820d1');
+      Map play = ParsePlay.parsePlay(result.toString());
+      var videos = play['data']['dash']['video'];
+      print(videos);
     }
   }
 
