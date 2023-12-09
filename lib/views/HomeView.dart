@@ -33,7 +33,7 @@ class _HomeView extends State<HomeView>{
         ),
       ),
       backgroundColor: Color.fromARGB(1, 138, 130, 246) ,
-      body: List(),
+      body: List(size: 10,),
     );
   }
 

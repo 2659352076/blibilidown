@@ -24,8 +24,6 @@ class _LayoutView extends State<LayoutView> {
       selectedIndex = index;
     });
   }
-
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(length: 2, child:  Scaffold(

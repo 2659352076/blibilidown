@@ -1,8 +1,14 @@
+import 'dart:io';
+
 import 'package:blbldown/views/AddDownload.dart';
 import 'package:flutter/material.dart';
 import './views/LayoutView.dart';
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
+  File file = File("./task.json");
+  if(await file.exists()){
+    file.create();
+  }
 }
 
 class MyApp extends StatelessWidget {

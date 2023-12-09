@@ -1,7 +1,14 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class List extends StatefulWidget {
+
+  List({Key? key, required this.size}):super(key : key);
+
+  int size;
+
   @override
   State<StatefulWidget> createState() {
     return _List();
