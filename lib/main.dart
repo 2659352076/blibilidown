@@ -6,7 +6,7 @@ import './views/LayoutView.dart';
 Future<void> main() async {
   runApp(const MyApp());
   File file = File("./task.json");
-  if(await file.exists()){
+  if(!await file.exists()){
     file.create();
   }
 }

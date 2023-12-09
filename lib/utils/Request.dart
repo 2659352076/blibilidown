@@ -27,9 +27,11 @@ class Request{
     return dio.get(path);
   }
   static download(String path,String filePath)  {
-    return dio.download(path,filePath,options: Options(headers: {
-      "range":0-9000000000000000,
-    }));
+    baseOptions.headers.addAll({
+      "Range":"bytes=0-999999999999999",
+    });
+
+    return dio.download(path,filePath);
   }
 
 }

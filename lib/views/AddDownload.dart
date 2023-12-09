@@ -54,7 +54,7 @@ class _AddDownload extends State<AddDownload> {
       showDefinition(supportFormats,video);
     }
   }
-  _onTapDownload(supportFormat, videos) {
+  _onTapDownload(supportFormat, videos) async {
     String videoPath = '';
     for(Map video in videos){
       if(supportFormat["quality"].toString().compareTo(video['id'].toString())==0){
@@ -62,13 +62,16 @@ class _AddDownload extends State<AddDownload> {
         break;
       }
     }
+    List<dynamic> data=[];
     if(!videoPath.isEmpty){
-      File file = File("../../task.json");
-      Request.download(videoPath ,"./$videoTitle");
-      List<dynamic> data = jsonDecode(file.readAsString().toString());
+      File file = File("F:/blbl_down/blbldown/task.json");
+      Request.download(videoPath ,"./$videoTitle.mp4");
+      String fileContent=  await file.readAsString();
+      if(!fileContent.isEmpty){
+        data = jsonDecode(fileContent );
+      }
       data.add({
         "videoTitle":videoTitle,
-
       });
     }
   }
